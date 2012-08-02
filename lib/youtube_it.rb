@@ -83,9 +83,9 @@ end
   request/video_upload
   request/video_search
   response/video_search
-  middleware/faraday_authheader.rb
-  middleware/faraday_oauth.rb
-  middleware/faraday_oauth2.rb
-  middleware/faraday_youtubeit.rb
+  middleware/request_authheader
+  middleware/request_oauth
+  middleware/request_oauth2
+  middleware/response
   chain_io
 ).each{|m| require File.dirname(__FILE__) + '/youtube_it/' + m }

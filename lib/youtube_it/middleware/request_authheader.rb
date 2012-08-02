@@ -1,6 +1,7 @@
-module Faraday
-  class Request::AuthHeader < Faraday::Middleware
-
+class YouTubeIt
+module Middleware
+module Request
+  class AuthHeader < Faraday::Middleware
     def call(env)
       req_headers = env[:request_headers]
       req_headers.merge!(@headers)
@@ -21,4 +22,6 @@ module Faraday
       @app, @headers = app, headers
     end
   end
+end
+end
 end

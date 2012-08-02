@@ -1,5 +1,6 @@
-module Faraday
-  class Response::YouTubeIt < Response::Middleware
+class YouTubeIt
+module Middleware
+  class Response  < Faraday::Response::Middleware
     def parse_upload_error_from(string)
       xml = Nokogiri::XML(string).at('errors')
       if xml
@@ -28,4 +29,5 @@ module Faraday
       end
     end
   end
+end
 end

@@ -620,13 +620,13 @@ class YouTubeIt
         Faraday.new(:url => (url ? url : base_url), :ssl => {:verify => false}) do |builder|
           if @access_token
             if @config_token
-              builder.use Faraday::Request::OAuth, @config_token
+              builder.use Middleware::Request::OAuth, @config_token
             else
-              builder.use Faraday::Request::OAuth2, @access_token
+              builder.use Middleware::Request::OAuth2, @access_token
             end
           end
-          builder.use Faraday::Request::AuthHeader, authorization_headers
-          builder.use Faraday::Response::YouTubeIt
+          builder.use Middleware::Request::AuthHeader, authorization_headers
+          builder.use Middleware::Response
           builder.adapter YouTubeIt.adapter
 
         end
